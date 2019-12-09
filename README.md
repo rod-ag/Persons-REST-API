@@ -1,5 +1,5 @@
 # Persons-REST-API
-A REST API for Persons resource
+A REST API for Person resource
 
 Features:
 - GET /api/personas endpoint (get All)
