@@ -10,7 +10,7 @@ import apirest.personas.repositories.PersonaRepository;
 import apirest.personas.services.PersonaService;
 
 /**
- * The PersonaService implementaion class
+ * The PersonaService implementation class
  */
 @Service
 public class PersonaServiceImpl implements PersonaService {
@@ -72,3 +72,4 @@ public class PersonaServiceImpl implements PersonaService {
         personaRepo.deleteById(personaId);
     }
 }
+
