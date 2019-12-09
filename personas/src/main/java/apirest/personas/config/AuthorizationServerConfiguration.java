@@ -13,26 +13,37 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
+/**
+ * The AuthorizationServerConfiguration Class
+ */
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
+    /** The AuthenticationManager */
     @Autowired
     @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
     
+    /** The TokenStore */
     @Autowired
     private TokenStore tokenStore;
     
+    /** The clientId */
     @Value("${security.oauth2.client.client-id}")
     private String clientId;
 
+    /** The clientSecret */
     @Value("${security.oauth2.client.client-secret}")
     private String clientSecret;
     
+    /** The client scope */
     @Value("${security.oauth2.client.scope}")
     private String clientScope;
     
+    /**
+     * The client details configuration
+     */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
@@ -46,13 +57,21 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
             
     }
     
+    /**
+     * The authorization server endpoints configuration
+     */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
             .authenticationManager(authenticationManager)
             .tokenStore(tokenStore);
     }
-     
+    
+    /**
+     * The TokenStore bean
+     * 
+     * @return token Store
+     */
     @Bean
     public TokenStore tokenStore() {
         return new InMemoryTokenStore();
