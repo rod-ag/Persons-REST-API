@@ -11,3 +11,4 @@ Features:
 - Swagger UI documentation with OAuth2 password flow grant type authorization
 - Respects Hateoas constraint (RESTful)
 - Persistence layer implementation using spring-data-jpa and MySQL
+- Unit tests of REST endpoints with SpringBootTest and MockMvc
