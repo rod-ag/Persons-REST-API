@@ -10,33 +10,49 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+/**
+ * The PersonasWebSecurityConfig Class
+ */
 @Configuration
 public class PersonasWebSecurityConfig extends WebSecurityConfigurerAdapter {
     
+    /** The user userName */
     @Value("${userdetails.user.username}")
     private String userName;
     
+    /** The user password */
     @Value("${userdetails.user.password}")
     private String userPassword;
     
+    /** The user role */
     @Value("${userdetails.user.role}")
     private String userRole;
     
+    /** The admin userName */
     @Value("${userdetails.admin.username}")
     private String adminName;
     
+    /** The admin user password */
     @Value("${userdetails.admin.password}")
     private String adminPassword;
     
+    /** The admin user role */
     @Value("${userdetails.admin.role}")
     private String adminRole;
-
+    
+    
+    /**
+     * The AuthenticationManager bean
+     */
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
     
+    /**
+     * The UserDetailsService bean
+     */
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
@@ -47,22 +63,4 @@ public class PersonasWebSecurityConfig extends WebSecurityConfigurerAdapter {
         
         return new InMemoryUserDetailsManager(user,userAdmin);
     }
-
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.cors().and().csrf().disable();
-//    }
-
-//    @Bean
-//    CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.setAllowedOrigins(Arrays.asList("*"));
-//        configuration.setAllowedMethods(Arrays.asList("*"));
-//        configuration.setAllowedHeaders(Arrays.asList("*"));
-//        configuration.setAllowCredentials(true);
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", configuration);
-//        return source;
-//    }
-
 }
