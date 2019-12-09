@@ -46,7 +46,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-
         clients.inMemory()
             .withClient(clientId)
             .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
@@ -54,7 +53,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
             .scopes(clientScope)
             .autoApprove(true)
             .secret(clientSecret);
-            
     }
     
     /**
