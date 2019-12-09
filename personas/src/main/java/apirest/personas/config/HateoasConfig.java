@@ -15,9 +15,15 @@ import org.springframework.hateoas.server.core.EvoInflectorLinkRelationProvider;
 import org.springframework.plugin.core.SimplePluginRegistry;
 import org.springframework.plugin.core.support.PluginRegistryFactoryBean;
 
+/**
+ * The HateoasConfig Class
+ */
 @Configuration
 public class HateoasConfig {
     
+    /**
+     * The LinkDiscoverers bean
+     */
     @Bean
     public LinkDiscoverers discoverers() {
         List<JsonPathLinkDiscoverer> plugins = new ArrayList<>();
@@ -25,18 +31,21 @@ public class HateoasConfig {
         return new LinkDiscoverers(SimplePluginRegistry.create(plugins));
     }
 
+    /**
+     * The LinkRelationProvider bean 
+     */
     @Bean
     public LinkRelationProvider provider() {
         return new EvoInflectorLinkRelationProvider();
     }
     
+    /**
+     * The PluginRegistryFactoryBean
+     */
     @Bean
     @Primary
-    public PluginRegistryFactoryBean<LinkRelationProvider, LinkRelationProvider.LookupContext>
-            myPluginRegistryProvider(){
-        
-        PluginRegistryFactoryBean<LinkRelationProvider, LinkRelationProvider.LookupContext> factory 
-            = new PluginRegistryFactoryBean<>();
+    public PluginRegistryFactoryBean<LinkRelationProvider, LinkRelationProvider.LookupContext> myPluginRegistryProvider() {
+        PluginRegistryFactoryBean<LinkRelationProvider, LinkRelationProvider.LookupContext> factory = new PluginRegistryFactoryBean<>();
         
         factory.setType(LinkRelationProvider.class);
         Class<?> classes[] = new Class<?>[1]; 
