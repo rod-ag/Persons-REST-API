@@ -9,5 +9,5 @@ Features:
 - DELETE /api/personas/{id} endpoint (delete resource)
 - POST,PUT,DELETE: Secured REST endpoints with Spring Security OAuth2. AuthorizationServer and ResourceServer implementation
 - Swagger UI documentation with OAuth2 password flow grant type authorization
-- Satisfies Hateoas constraint (RESTful)
+- Respects Hateoas constraint (RESTful)
 - Persistence layer implementation using spring-data-jpa and MySQL
